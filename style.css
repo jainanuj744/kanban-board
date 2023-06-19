@@ -1,11 +1,9 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     /* // padding in textarea required border-box */
 }
-
-
 
 .container {
     width: 100%;
@@ -49,9 +47,11 @@
 .action {
     height: 50vh;
     width: 50vw;
-    display: flex;
+    display: none;
     position: absolute;
+    /* position: fixed; */
     /* position: fixed can also apply here; */
+    border: 2px solid black;
     left: 25vw;
     top: 25vh;
 }
@@ -100,6 +100,10 @@
     background-color: black;
 }
 
+.red{
+    color: red;
+}
+
 .card_container{
     display: flex;
     flex-wrap: wrap;
@@ -113,6 +117,7 @@
     height: 10rem;
     width: 15rem;
     background-color: aqua;
+    position: relative;
 }
 
 .card-color{
@@ -126,7 +131,17 @@
 }
 
 .card_area{
-    height: 7rem;
+    height: 6rem;
     padding: 0.25rem;
     font-size: 1.25rem;
+}
+
+.lock_btn{
+    position: absolute;
+    height: 1rem;
+    font-size: 1.25rem;
+    /* margin-right: 0.25rem; */
+    /* margin-bottom: 0.25rem; */
+    right: 0.5rem;
+    bottom: 0.75rem;
 }
