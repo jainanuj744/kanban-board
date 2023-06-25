@@ -13,6 +13,8 @@ let deleteOnn = false;
 let cardColor = "black";
 // let lockFlag = true;
 
+var uid = new ShortUniqueId();
+
 add_btn.addEventListener("click", function () {
     if (addModal) {
         modal.style.display = "flex";
@@ -70,7 +72,7 @@ function createCard(card_desc) {
     let cardContainer = document.createElement("div");
     cardContainer.setAttribute("class","card");
     cardContainer.innerHTML =`<div class="card-color ${cardColor}"></div>
-                              <div class="card_id">#123</div>
+                              <div class="card_id">#${uid()}</div>
                               <div class="card_area">${card_desc}</div>
                               <div class="lock_btn"><i class="fa-solid fa-lock"></i></div>`
     card_container.appendChild(cardContainer);
