@@ -54,6 +54,7 @@
     border: 2px solid black;
     left: 25vw;
     top: 25vh;
+    z-index: 1;
 }
 
 .textarea {
