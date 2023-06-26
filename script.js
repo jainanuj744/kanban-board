@@ -76,4 +76,11 @@ function createCard(card_desc) {
                               <div class="card_area">${card_desc}</div>
                               <div class="lock_btn"><i class="fa-solid fa-lock"></i></div>`
     card_container.appendChild(cardContainer);
+
+    // handle delete
+    cardContainer.addEventListener("click",function(){
+        if(deleteOnn){
+            cardContainer.remove();
+        }
+    })
 }
