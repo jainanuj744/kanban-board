@@ -2,16 +2,38 @@ let add_btn = document.querySelector(".add-btn");
 let del_btn = document.querySelector(".del-btn");
 let modal = document.querySelector(".action");
 let trash = document.querySelector(".fa-trash");
-let priority_color = document.querySelectorAll(".priority-color")
+let priority_color = document.querySelectorAll(".priority-color");
 let textarea = document.querySelector(".textarea");
 let card_container = document.querySelector(".card_container");
-
+let filter = document.querySelectorAll(".color");
 let addModal = true;
 let deleteOnn = false;
 let cardColor = "black";
 let color = ["red", "blue", "green", "black"];
 
 var uid = new ShortUniqueId();
+
+for (let i = 0; i < filter.length; i++) {
+    filter[i].addEventListener("click", function () {
+        let cardCol = document.querySelectorAll(".card-color");
+        let selectedFilter = filter[i].classList[1];
+        for (let j = 0; j < cardCol.length; j++) {
+            let currentCol = cardCol[j].classList[1];
+            if (selectedFilter == currentCol) {
+                cardCol[j].parentElement.style.display = "block";
+            } else {
+                cardCol[j].parentElement.style.display = "none";
+            }
+        }
+    })
+
+    filter[i].addEventListener("dblclick", function () {
+        let cardCol = document.querySelectorAll(".card-color");
+        for (let j = 0; j < cardCol.length; j++) {
+            cardCol[j].parentElement.style.display = "block";
+        }
+    })
+}
 
 add_btn.addEventListener("click", function () {
     if (addModal) {
@@ -70,10 +92,10 @@ function createCard(card_desc) {
 
     // handle priority color
     handlePriorityColor(cardContainer);
-  
+
 }
 
-function handleLockUnlock(cardContainer){
+function handleLockUnlock(cardContainer) {
     let lock_btn = document.querySelector(".lock_btn i");
     let card_area = cardContainer.querySelector(".card_area");
     lock_btn.addEventListener("click", function () {
@@ -90,7 +112,7 @@ function handleLockUnlock(cardContainer){
     })
 }
 
-function handleDelete(cardContainer){
+function handleDelete(cardContainer) {
     cardContainer.addEventListener("click", function () {
         if (deleteOnn) {
             cardContainer.remove();
@@ -98,7 +120,7 @@ function handleDelete(cardContainer){
     })
 }
 
-function handlePriorityColor(cardContainer){
+function handlePriorityColor(cardContainer) {
     let card_color = cardContainer.querySelector(".card-color");
     card_color.addEventListener("click", function () {
         let current_color = card_color.classList[1];
