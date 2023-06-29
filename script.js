@@ -1,17 +1,15 @@
 let add_btn = document.querySelector(".add-btn");
 let del_btn = document.querySelector(".del-btn");
-// let lock_btn = document.querySelector(".lock_btn i");
 let modal = document.querySelector(".action");
 let trash = document.querySelector(".fa-trash");
 let priority_color = document.querySelectorAll(".priority-color")
 let textarea = document.querySelector(".textarea");
 let card_container = document.querySelector(".card_container");
 
-// let lock_logo = lock_btn.querySelector(".fa-lock");
 let addModal = true;
 let deleteOnn = false;
 let cardColor = "black";
-// let lockFlag = true;
+let color = ["red", "blue", "green", "black"];
 
 var uid = new ShortUniqueId();
 
@@ -33,19 +31,6 @@ del_btn.addEventListener("click", function () {
     deleteOnn = !deleteOnn;
 })
 
-// lock_btn.addEventListener("click", function () {
-//     if (lock_btn.classList.contains("fa-lock")) {
-//         console.log("btn unlocked");
-//         lock_btn.classList.remove("fa-lock");
-//         lock_btn.classList.add("fa-lock-open");
-//     }
-//     else {
-//         console.log("btn locked");
-//         lock_btn.classList.remove("fa-lock-open");
-//         lock_btn.classList.add("fa-lock");
-//     }
-// })
-
 for (let i = 0; i < priority_color.length; i++) {
     priority_color[i].addEventListener("click", function (e) {
         for (let i = 0; i < priority_color.length; i++) {
@@ -59,7 +44,7 @@ for (let i = 0; i < priority_color.length; i++) {
 }
 
 textarea.addEventListener("keydown", function (e) {
-    if(e.key == "Enter") {
+    if (e.key == "Enter") {
         let card_desc = textarea.value;
         createCard(card_desc);
         textarea.value = "";
@@ -70,17 +55,59 @@ textarea.addEventListener("keydown", function (e) {
 
 function createCard(card_desc) {
     let cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class","card");
-    cardContainer.innerHTML =`<div class="card-color ${cardColor}"></div>
+    cardContainer.setAttribute("class", "card");
+    cardContainer.innerHTML = `<div class="card-color ${cardColor}"></div>
                               <div class="card_id">#${uid()}</div>
                               <div class="card_area">${card_desc}</div>
                               <div class="lock_btn"><i class="fa-solid fa-lock"></i></div>`
     card_container.appendChild(cardContainer);
 
+    // handle lock-unlock
+    handleLockUnlock(cardContainer);
+
     // handle delete
-    cardContainer.addEventListener("click",function(){
-        if(deleteOnn){
+    handleDelete(cardContainer);
+
+    // handle priority color
+    handlePriorityColor(cardContainer);
+  
+}
+
+function handleLockUnlock(cardContainer){
+    let lock_btn = document.querySelector(".lock_btn i");
+    let card_area = cardContainer.querySelector(".card_area");
+    lock_btn.addEventListener("click", function () {
+        if (lock_btn.classList.contains("fa-lock")) {
+            lock_btn.classList.remove("fa-lock");
+            lock_btn.classList.add("fa-lock-open");
+            card_area.setAttribute("contenteditable", "true");
+        }
+        else {
+            lock_btn.classList.remove("fa-lock-open");
+            lock_btn.classList.add("fa-lock");
+            card_area.setAttribute("contenteditable", "false");
+        }
+    })
+}
+
+function handleDelete(cardContainer){
+    cardContainer.addEventListener("click", function () {
+        if (deleteOnn) {
             cardContainer.remove();
         }
+    })
+}
+
+function handlePriorityColor(cardContainer){
+    let card_color = cardContainer.querySelector(".card-color");
+    card_color.addEventListener("click", function () {
+        let current_color = card_color.classList[1];
+        let current_color_index = color.indexOf(current_color);
+        let next_color_index = (current_color_index + 1) % color.length;
+        let next_color = color[next_color_index];
+
+        card_color.classList.remove(current_color);
+        card_color.classList.add(next_color);
+
     })
 }

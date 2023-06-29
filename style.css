@@ -67,6 +67,7 @@ body{
     left: 25vw;
     top: 25vh;
     z-index: 1;
+    border: 1px solid black;
 }
 
 .textarea {
@@ -80,6 +81,7 @@ body{
     font-size: 2rem;
     /* cursor: pointer; */
     padding: 2rem;
+    /* overflow: auto; */
 }
 
 .modal_filter {
@@ -159,6 +161,9 @@ body{
     height: 6rem;
     padding: 0.5rem;
     font-size: 1.25rem;
+    overflow: auto;
+    word-break: break-all;
+    outline: none;
 }
 
 .lock_btn{
