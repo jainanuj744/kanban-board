@@ -18,7 +18,7 @@ let cardArr = [];
 if (localStorage.getItem("tickets")) {
     let str = localStorage.getItem("tickets");
     let arr = JSON.parse(str);
-    console.log(arr);
+    // console.log(arr);
     cardArr = arr;
     for (let i = 0; i < cardArr.length; i++) {
         let cardObj = cardArr[i];
@@ -90,6 +90,10 @@ textarea.addEventListener("keydown", function (e) {
 })
 
 function createCard(card_desc, cardColor, cardId) {
+
+    if(card_desc == ""){
+        return;
+    }
     let id;
     if (cardId == undefined) {
         id = uid();
@@ -121,7 +125,7 @@ function createCard(card_desc, cardColor, cardId) {
 }
 
 function handleLockUnlock(cardContainer, id) {
-    let lock_btn = document.querySelector(".lock_btn i");
+    let lock_btn = cardContainer.querySelector(".lock_btn i");
     let card_area = cardContainer.querySelector(".card_area");
     lock_btn.addEventListener("click", function () {
         if (lock_btn.classList.contains("fa-lock")) {
