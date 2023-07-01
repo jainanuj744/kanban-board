@@ -1,9 +1,9 @@
-:root{
+:root {
     --ligthBackground: #F9F5EB;
-    --background:#E4DCCF;
-    --red:#EA5455;
-    --blue:#002B5B;
-    --green:#245953;
+    --background: #E4DCCF;
+    --red: #EA5455;
+    --blue: #002B5B;
+    --green: #245953;
 }
 
 * {
@@ -13,7 +13,7 @@
     /* // padding in textarea required border-box */
 }
 
-body{
+body {
     background-color: var(--background);
 }
 
@@ -52,7 +52,8 @@ body{
     align-items: center;
 }
 
-.add-btn,.del-btn {
+.add-btn,
+.del-btn {
     font-size: 1.6rem;
 }
 
@@ -94,17 +95,17 @@ body{
     align-items: center;
 }
 
-.color{
+.color {
     height: 1.5rem;
     width: 2.75rem;
 }
 
-.priority-color{
+.priority-color {
     height: 2rem;
     width: 3.5rem;
 }
 
-.active{
+.active {
     border: 5px solid yellow;
     /* transition: all 0.3s; */
     transition: all 0.3s linear;
@@ -126,11 +127,11 @@ body{
     background-color: black;
 }
 
-.red{
+.red {
     color: red;
 }
 
-.card_container{
+.card_container {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -138,7 +139,7 @@ body{
     margin-top: 7rem;
 }
 
-.card{
+.card {
     margin-left: 2rem;
     height: 10rem;
     width: 15rem;
@@ -146,18 +147,18 @@ body{
     position: relative;
 }
 
-.card-color{
+.card-color {
     height: 1rem;
 }
 
-.card_id{
+.card_id {
     height: 1.5rem;
     font-weight: 600;
     padding-left: 0.5rem;
     padding-top: 0.25rem;
 }
 
-.card_area{
+.card_area {
     height: 6rem;
     padding: 0.5rem;
     font-size: 1.25rem;
@@ -166,7 +167,7 @@ body{
     outline: none;
 }
 
-.lock_btn{
+.lock_btn {
     position: absolute;
     height: 1rem;
     font-size: 1.25rem;
